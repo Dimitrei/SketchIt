@@ -1,7 +1,7 @@
 <resources>
+    <string name="app_name">SketchIt</string>
 
     <!-- Begin: Options Menu Items -->
-    <string name="app_name">SketchIt</string>
     <string name="item_open">Open…</string>
     <string name="item_save">Save…</string>
     <string name="item_brush_color">Brush Color</string>

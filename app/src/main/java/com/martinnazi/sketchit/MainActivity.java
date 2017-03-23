@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        actionBar = getSupportActionBar();
+        actionBar = getSupportActionBar(); //This may not be needed - I just grabbed it in case
     }
 
     /**
@@ -53,6 +53,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.item_brush_color:
                 break;
+            /**
+             * Below are the shape selectors in the SubMenu Shape (Do you want to stay with this option?)
+             */
             case R.id.item_shape_line:
                 break;
             case R.id.item_shape_circle:
