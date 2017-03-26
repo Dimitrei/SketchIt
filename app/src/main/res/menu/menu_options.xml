@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/item_open"
+        android:title="@string/item_open" />
+    <item
+        android:id="@+id/item_save"
+        android:title="@string/item_save" />
+    <item
+        android:id="@+id/item_brush_color"
+        android:title="@string/item_brush_color" />
+    <item
+        android:id="@+id/item_shape"
+        android:title="@string/item_shape">
+        <menu>
+            <item
+                android:id="@+id/item_shape_line"
+                android:title="@string/item_shape_line" />
+            <item
+                android:id="@+id/item_shape_circle"
+                android:title="@string/item_shape_circle" />
+            <item
+                android:id="@+id/item_shape_rectangle"
+                android:title="@string/item_shape_rectangle" />
+        </menu>
+    </item>
+    <item
+        android:id="@+id/item_clear_image"
+        android:title="@string/item_clear_image" />
+</menu>

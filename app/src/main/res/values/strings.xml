@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">SketchIt</string>
+
+    <!-- Begin: Options Menu Items -->
+    <string name="item_open">Open…</string>
+    <string name="item_save">Save…</string>
+    <string name="item_brush_color">Brush Color</string>
+    <string name="item_shape">Shape</string>
+    <string name="item_shape_line">Line</string>
+    <string name="item_shape_circle">Circle</string>
+    <string name="item_shape_rectangle">Rectangle</string>
+    <string name="item_clear_image">Clear Image</string>
+    <!-- End: Options Menu Items -->
 </resources>
