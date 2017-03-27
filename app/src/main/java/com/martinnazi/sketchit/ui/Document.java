@@ -28,10 +28,18 @@ public class Document implements Serializable {
     private List<Line> lines;
     private List<Rectangle> rectangles;
 
+
     public Document() {
         ellipses = new ArrayList<>();
         lines = new ArrayList<>();
         rectangles = new ArrayList<>();
+    }
+
+    public void clear(){
+        ellipses.clear();
+        lines.clear();
+        rectangles.clear();
+        //Update screen
     }
 
     public void save(File document) {

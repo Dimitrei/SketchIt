@@ -29,6 +29,6 @@
         </menu>
     </item>
     <item
-        android:id="@+id/item_clear_image"
-        android:title="@string/item_clear_image" />
+        android:id="@+id/item_reset_workspace"
+        android:title="@string/item_reset_workspace" />
 </menu>
