@@ -9,6 +9,6 @@
     <string name="item_shape_line">Line</string>
     <string name="item_shape_circle">Circle</string>
     <string name="item_shape_rectangle">Rectangle</string>
-    <string name="item_clear_image">Clear Image</string>
+    <string name="item_reset_workspace">Reset Workspace</string>
     <!-- End: Options Menu Items -->
 </resources>
