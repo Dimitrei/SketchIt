@@ -14,15 +14,18 @@
         android:id="@+id/item_shape"
         android:title="@string/item_shape">
         <menu>
-            <item
-                android:id="@+id/item_shape_line"
-                android:title="@string/item_shape_line" />
-            <item
-                android:id="@+id/item_shape_circle"
-                android:title="@string/item_shape_circle" />
-            <item
-                android:id="@+id/item_shape_rectangle"
-                android:title="@string/item_shape_rectangle" />
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/item_shape_line"
+                    android:checked="true"
+                    android:title="@string/item_shape_line" />
+                <item
+                    android:id="@+id/item_shape_circle"
+                    android:title="@string/item_shape_circle" />
+                <item
+                    android:id="@+id/item_shape_rectangle"
+                    android:title="@string/item_shape_rectangle" />
+            </group>
         </menu>
     </item>
     <item
