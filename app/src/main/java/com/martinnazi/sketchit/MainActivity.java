@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.martinnazi.sketchit.ui.Document;
 
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         actionBar = getSupportActionBar(); //This may not be needed - I just grabbed it in case
+        document = new Document(); //Create new document file when activity is created (used to access load/save functions or just to start drawing)
     }
 
     /**
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Dispatch incoming result to the correct fragment.
+     * Dispatch incoming result to correct option
      *
      * @param requestCode
      * @param resultCode
@@ -69,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
      */
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+//        super.onActivityResult(requestCode, resultCode, data);
         switch (requestCode) {
             case OPEN_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
@@ -78,8 +80,13 @@ public class MainActivity extends AppCompatActivity {
                     if (data != null) {
                         uri = data.getData();
                         Log.i("DEBUG", "Uri: " + uri.toString());
+                        //Load documentFile into document
+                        document = document.Load(documentFile);
+                        Toast.makeText(getApplicationContext(), String.format("Loaded: {%s}",
+                                documentFile.getName()), Toast.LENGTH_SHORT).show();
+                    } else {
+                        //Some error
                     }
-                    //Load file into document
                 } else {
                     //Some Error
                 }
@@ -90,6 +97,17 @@ public class MainActivity extends AppCompatActivity {
                     if (data != null) {
                         uri = data.getData();
                         Log.i("DEBUG", "Uri: " + uri.toString());
+                        //Write document into documentFile
+                        if (documentFile == null) {
+                            documentFile = new File(uri.getPath());
+                            document.save(documentFile);
+                        } else {
+                            document.save(documentFile);
+                        }
+                        Toast.makeText(getApplicationContext(), String.format("Saved: {%s}",
+                                documentFile.getName()), Toast.LENGTH_SHORT).show();
+                    } else {
+                        //Some error
                     }
                 } else {
                     //Some Error
@@ -122,7 +140,7 @@ public class MainActivity extends AppCompatActivity {
                  * else
                  * * save file to current file name & directory
                  */
-                if (document == null) {
+                if (documentFile == null) {
                     saveFileChooser();
                 } else {
                     /**
@@ -156,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
     private void saveFileChooser() {
         saveFileIntent.addCategory(Intent.CATEGORY_OPENABLE);
         saveFileIntent.setType("*/*");
-        saveFileIntent.putExtra(Intent.EXTRA_TITLE, "document.sketch");
+        saveFileIntent.putExtra(Intent.EXTRA_TITLE, "new_document.sketch");
         startActivityForResult(saveFileIntent, SAVE_REQUEST_CODE);
     }
 
