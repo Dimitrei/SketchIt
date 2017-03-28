@@ -12,13 +12,6 @@ import android.widget.Toast;
 
 import com.martinnazi.sketchit.ui.Document;
 
-import java.io.File;
-
-/**
- * TODO: User weight for lines
- * * Option: Use OptionsMenu to select weight just like shapes
- * TODO: Implement drawable shapes: Lines, Rectangle, and Ellipses (Circles)
- */
 public class MainActivity extends AppCompatActivity {
 
     final private int OPEN_REQUEST_CODE = 1001;
@@ -29,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
     private ActionBar actionBar;
     private Document document;
     private Uri documentUri;
+    /**
+     * Used for saving & loading of {@link Document} files.
+     */
     private ContentResolver contentResolver;
 
     /**
@@ -41,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         actionBar = getSupportActionBar(); //This may not be needed - I just grabbed it in case
-        document = new Document(getApplicationContext()); //Create new document file when activity is created (used to access load/save functions or just to start drawing)
+        document = (Document) findViewById(R.id.document); //Create new document file when activity is created (used to access load/save functions or just to start drawing)
         contentResolver = getContentResolver();
     }
 
@@ -73,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     if (data != null) {
                         documentUri = data.getData();
                         document = document.Load(documentUri, contentResolver);
-//                        showLoadedMessage();
+                        showLoadedMessage();
                     } else {
                         //Some error
                     }
@@ -85,9 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     if (data != null) {
                         documentUri = data.getData();
-                        //Write document into documentFile
                         document.save(documentUri, contentResolver);
-//                        showSavedMessage();
+                        showSavedMessage();
                     } else {
                         //Some error
                     }
@@ -101,13 +96,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showLoadedMessage() {
-        Toast.makeText(getApplicationContext(), String.format("Loaded: {%s}",
-                new File("").getName()), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Loaded document!",
+                Toast.LENGTH_SHORT).show();
     }
 
     private void showSavedMessage() {
-        Toast.makeText(getApplicationContext(), String.format("Saved: {%s}",
-                new File("").getName()), Toast.LENGTH_SHORT).show();
+        Toast.makeText(getApplicationContext(), "Saved document!",
+                Toast.LENGTH_SHORT).show();
     }
 
     /**
@@ -136,8 +131,14 @@ public class MainActivity extends AppCompatActivity {
                     saveFileChooser();
                 } else {
                     document.save(documentUri, contentResolver);
-//                    showSavedMessage();
+                    showSavedMessage();
                 }
+                break;
+            /**
+             * TODO: User weight for lines
+             * * Option: Use OptionsMenu to select weight just like shapes
+             */
+            case R.id.item_brush_weight:
                 break;
 
             /**
@@ -169,6 +170,12 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * TODO v0.3: Change to a different Activity that allows user to enter in a filename
+     * * This will require users to enter a non-blank name, or a name with spaces. && if no *.sketch is present, extension will be added.
+     * * This however, will not solve finding document names when opening in our program.
+     * * * To get around this, we must implement our own file selection menu (probably a dialogbox with a hierarchical view
+     */
     private void saveFileChooser() {
         saveFileIntent.addCategory(Intent.CATEGORY_OPENABLE);
         saveFileIntent.setType("*/*");

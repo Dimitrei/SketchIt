@@ -2,8 +2,13 @@ package com.martinnazi.sketchit.ui;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.ParcelFileDescriptor;
+import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -23,6 +28,7 @@ import java.util.List;
 /**
  * The Document class is a representation of the shapes on screen.
  * It is able to be saved and loaded from a file implementing {@link Serializable}.
+ * TODO: Implement drawable shapes: Lines, Rectangle, and Ellipses (Circles)
  */
 public class Document extends View implements Serializable {
 
@@ -32,9 +38,46 @@ public class Document extends View implements Serializable {
 
     public Document(Context context) {
         super(context);
+        setup();
+    }
+
+    public Document(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        setup();
+    }
+
+    public Document(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        setup();
+    }
+
+    private void setup() {
         ellipses = new ArrayList<>();
         lines = new ArrayList<>();
         rectangles = new ArrayList<>();
+    }
+
+    /**
+     * TODO: Draw shapes in onDraw
+     * * Add new shape through onTouch
+     */
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        Paint paint = new Paint();
+        paint.setColor(Color.BLUE);
+        paint.setAntiAlias(true);
+        paint.setStrokeWidth(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 6f, getResources().getDisplayMetrics()));
+        float x0 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0f, getResources().getDisplayMetrics());
+        float y0 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 0f, getResources().getDisplayMetrics());
+        float x1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 40f, getResources().getDisplayMetrics());
+        float y1 = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 60f, getResources().getDisplayMetrics());
+        canvas.drawLine(x0, y0, x1, y1, paint);
+    }
+
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
     }
 
     /**
@@ -66,8 +109,9 @@ public class Document extends View implements Serializable {
         ellipses.clear();
         lines.clear();
         rectangles.clear();
-        //Update screen
+        invalidate();
     }
+
 
     public void save(Uri document, ContentResolver contentResolver) {
         ParcelFileDescriptor PFD = null;
