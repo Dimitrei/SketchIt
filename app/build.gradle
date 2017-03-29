@@ -10,7 +10,8 @@ android {
         versionCode 0
         versionName '0.1.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-        versionNameSuffix 'a'
+
+        versionNameSuffix 'b' + getDate()
     }
     buildTypes {
         release {
@@ -29,4 +30,12 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.1.0'
     testCompile 'junit:junit:4.12'
+}
+
+/**
+ * Creates Date object based on the build date.
+ * @return A {@code Date} object.
+ */
+def getDate() {
+    new Date().format('yyyyMMddHHmmss')
 }

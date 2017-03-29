@@ -6,11 +6,12 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.martinnazi.sketchit.ui.Document;
+import com.martinnazi.sketchit.ui.DocumentView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,10 +21,10 @@ public class MainActivity extends AppCompatActivity {
     final private Intent saveFileIntent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
 
     private ActionBar actionBar;
-    private Document document;
+    private DocumentView documentView;
     private Uri documentUri;
     /**
-     * Used for saving & loading of {@link Document} files.
+     * Used for saving & loading of {@link DocumentView} files.
      */
     private ContentResolver contentResolver;
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         actionBar = getSupportActionBar(); //This may not be needed - I just grabbed it in case
-        document = (Document) findViewById(R.id.document); //Create new document file when activity is created (used to access load/save functions or just to start drawing)
+        documentView = (DocumentView) findViewById(R.id.document); //Create new document file when activity is created (used to access load/save functions or just to start drawing)
         contentResolver = getContentResolver();
     }
 
@@ -68,26 +69,33 @@ public class MainActivity extends AppCompatActivity {
                 if (resultCode == RESULT_OK) {
                     if (data != null) {
                         documentUri = data.getData();
-                        document = document.Load(documentUri, contentResolver);
+                        documentView.Load(documentUri, contentResolver);
                         showLoadedMessage();
                     } else {
-                        //Some error
+                        Log.d("DEBUG",
+                                "onActivityResult() called with: requestCode = [" + requestCode + "]," +
+                                        " resultCode = [" + resultCode + "], data = [" + data + "]");
                     }
                 } else {
-                    //Some Error
+                    Log.d("DEBUG",
+                            "onActivityResult() called with: requestCode = [" + requestCode + "]," +
+                                    " resultCode = [" + resultCode + "], data = [" + data + "]");
                 }
                 break;
             case SAVE_REQUEST_CODE:
                 if (resultCode == RESULT_OK) {
                     if (data != null) {
                         documentUri = data.getData();
-                        document.save(documentUri, contentResolver);
+                        documentView.save(documentUri, contentResolver);
                         showSavedMessage();
                     } else {
-                        //Some error
+                        Log.d("DEBUG",
+                                "onActivityResult() called with: requestCode = [" + requestCode + "]," +
+                                        " resultCode = [" + resultCode + "], data = [" + data + "]");
                     }
                 } else {
-                    //Some Error
+                    Log.d("DEBUG", "onActivityResult() called with: requestCode = [" + requestCode + "]," +
+                            " resultCode = [" + resultCode + "], data = [" + data + "]");
                 }
                 break;
             default:
@@ -95,11 +103,17 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Shows a {@link Toast} to the user indicating the document was loaded.
+     */
     private void showLoadedMessage() {
         Toast.makeText(getApplicationContext(), "Loaded document!",
                 Toast.LENGTH_SHORT).show();
     }
 
+    /**
+     * Shows a {@link Toast} to the user indicating the document was saved.
+     */
     private void showSavedMessage() {
         Toast.makeText(getApplicationContext(), "Saved document!",
                 Toast.LENGTH_SHORT).show();
@@ -109,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
      * Handle OptionsMenu item selection from the ActionBar.
      *
      * @param item The menu item pressed.
-     * @return Returns true to end menu processing here.
+     * @return Returns {@code true} to end menu processing here.
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -130,40 +144,42 @@ public class MainActivity extends AppCompatActivity {
                 if (documentUri == null) {
                     saveFileChooser();
                 } else {
-                    document.save(documentUri, contentResolver);
+                    documentView.save(documentUri, contentResolver);
                     showSavedMessage();
                 }
                 break;
             /**
              * TODO: User weight for lines
-             * * Option: Use OptionsMenu to select weight just like shapes
+             * * Option: Use OptionsMenu to select weight just like Shape submenu.
              */
             case R.id.item_brush_weight:
                 break;
 
             /**
              * TODO: User color for shapes
-             * * Option: When item_brush_color is pressed show a dialog box (Most preferred)
-             * * TODO: Add selectedColor field to the Document class to indicate which color should be drawn next
+             * * Option: When item_brush_color is pressed show a dialog box.
+             * * TODO: Add selectedColor field to the Document class to indicate which color shapes should be drawn with
              */
             case R.id.item_brush_color:
                 break;
 
             /**
-             * TODO: Add selectedShape field to the Document class to indicate which shape should be drawn with next
-             * Below are the shape selectors in the SubMenu Shape (Do you want to stay with this option?)
+             * The cases below are the shape selectors in the Shape submenu.
              */
             case R.id.item_shape_line:
                 item.setChecked(true);
+                documentView.setObject2DType("Line");
                 break;
-            case R.id.item_shape_circle:
+            case R.id.item_shape_ellipse:
                 item.setChecked(true);
+                documentView.setObject2DType("Ellipse");
                 break;
             case R.id.item_shape_rectangle:
                 item.setChecked(true);
+                documentView.setObject2DType("Rectangle");
                 break;
             case R.id.item_reset_workspace:
-                document.clear();
+                documentView.clear();
                 documentUri = null;
                 break;
         }

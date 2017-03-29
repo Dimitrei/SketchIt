@@ -7,7 +7,7 @@
     <string name="item_brush_color">Brush Color</string>
     <string name="item_shape">Shape</string>
     <string name="item_shape_line">Line</string>
-    <string name="item_shape_circle">Circle</string>
+    <string name="item_shape_ellipse">Ellipse</string>
     <string name="item_shape_rectangle">Rectangle</string>
     <string name="item_reset_workspace">Reset Workspace</string>
     <!-- End: Options Menu Items -->
