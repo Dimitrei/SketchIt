@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        actionBar = getSupportActionBar(); //This may not be needed - I just grabbed it in case
         documentView = (DocumentView) findViewById(R.id.document); //Create new document file when activity is created (used to access load/save functions or just to start drawing)
         contentResolver = getContentResolver();
     }
@@ -148,6 +147,9 @@ public class MainActivity extends AppCompatActivity {
                     showSavedMessage();
                 }
                 break;
+            case R.id.item_save_as:
+                saveFileChooser();
+                break;
             /**
              * TODO: User weight for lines
              * * Option: Use OptionsMenu to select weight just like Shape submenu.
@@ -168,15 +170,19 @@ public class MainActivity extends AppCompatActivity {
              */
             case R.id.item_shape_line:
                 item.setChecked(true);
-                documentView.setObject2DType("Line");
+                documentView.setObject2DType(getString(R.string.shape_type_line));
                 break;
             case R.id.item_shape_ellipse:
                 item.setChecked(true);
-                documentView.setObject2DType("Ellipse");
+                documentView.setObject2DType(getString(R.string.shape_type_ellipse));
                 break;
             case R.id.item_shape_rectangle:
                 item.setChecked(true);
-                documentView.setObject2DType("Rectangle");
+                documentView.setObject2DType(getString(R.string.shape_type_rectangle));
+                break;
+            case R.id.item_shape_free_form:
+                item.setChecked(true);
+                documentView.setObject2DType(getString(R.string.shape_type_free_form));
                 break;
             case R.id.item_reset_workspace:
                 documentView.clear();

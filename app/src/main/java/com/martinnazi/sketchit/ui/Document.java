@@ -4,38 +4,20 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Document implements Serializable {
-    List<Ellipse> ellipses;
-    List<Line> lines;
-    List<Rectangle> rectangles;
+class Document implements Serializable {
 
-    public Document() {
-        ellipses = new ArrayList<>();
-        lines = new ArrayList<>();
-        rectangles = new ArrayList<>();
+    private List<Object2D> object2Ds;
+
+    Document() {
+        object2Ds = new ArrayList<>();
     }
 
-    public List<Ellipse> getEllipses() {
-        return ellipses;
+    public List<Object2D> getObject2Ds() {
+        return object2Ds;
     }
 
-    public void setEllipses(List<Ellipse> ellipses) {
-        this.ellipses = ellipses;
+    public void setObject2Ds(List<Object2D> object2Ds) {
+        this.object2Ds = object2Ds;
     }
 
-    public List<Line> getLines() {
-        return lines;
-    }
-
-    public void setLines(List<Line> lines) {
-        this.lines = lines;
-    }
-
-    public List<Rectangle> getRectangles() {
-        return rectangles;
-    }
-
-    public void setRectangles(List<Rectangle> rectangles) {
-        this.rectangles = rectangles;
-    }
 }

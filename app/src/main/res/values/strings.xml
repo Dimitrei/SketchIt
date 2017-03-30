@@ -10,5 +10,11 @@
     <string name="item_shape_ellipse">Ellipse</string>
     <string name="item_shape_rectangle">Rectangle</string>
     <string name="item_reset_workspace">Reset Workspace</string>
+    <string name="shape_type_line">Line</string>
+    <string name="shape_type_ellipse">Ellipse</string>
+    <string name="shape_type_rectangle">Rectangle</string>
+    <string name="shape_type_free_form">Free-Form</string>
+    <string name="item_save_as">Save as...</string>
+    <string name="item_brush_weight">Brush Weight</string>
     <!-- End: Options Menu Items -->
 </resources>

@@ -23,10 +23,6 @@ class Line extends Object2D {
         return this.width;
     }
 
-    public float getPaintWidth() {
-        return this.paint.getStrokeWidth();
-    }
-
     public void setWidth(float width) {
         this.width = width;
         this.paint.setStrokeWidth(width);
