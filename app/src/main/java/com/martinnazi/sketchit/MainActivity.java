@@ -4,7 +4,6 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -20,7 +19,6 @@ public class MainActivity extends AppCompatActivity {
     final private int SAVE_REQUEST_CODE = 1100;
     final private Intent saveFileIntent = new Intent(Intent.ACTION_CREATE_DOCUMENT);
 
-    private ActionBar actionBar;
     private DocumentView documentView;
     private Uri documentUri;
     /**

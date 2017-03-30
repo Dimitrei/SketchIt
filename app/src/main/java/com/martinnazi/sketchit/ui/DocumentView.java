@@ -233,7 +233,14 @@ public class DocumentView extends View {
                     Line line = new Line(firstTouchX, firstTouchY,
                             lastTouchX, lastTouchY);
 
+                    /**
+                     * TODO: Replace the method call below when colors are implemented.
+                     */
                     freeFormLine.setColor(Color.MAGENTA);
+
+                    /**
+                     * TODO: Replace the method call below when line widths are implemented.
+                     */
                     freeFormLine.setWidth(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics()));
                     freeFormLine.addLine(line);
                 }

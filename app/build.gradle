@@ -11,7 +11,7 @@ android {
         versionName '0.1.1'
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
-        versionNameSuffix 'c' + getDate()
+        versionNameSuffix 'c' + "-build:" + getDate()
     }
     buildTypes {
         release {
@@ -37,5 +37,5 @@ dependencies {
  * @return A {@code Date} object.
  */
 def getDate() {
-    new Date().format('yyyyMMddHHmmss')
+    new Date().format('yyyyMMddHHmm')
 }
