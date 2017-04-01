@@ -5,6 +5,12 @@
     <string name="item_open">Open…</string>
     <string name="item_save">Save…</string>
     <string name="item_brush_color">Brush Color</string>
+    <string name="item_color_red">Red</string>
+    <string name="item_color_blue">Blue</string>
+    <string name="item_color_yellow">Yellow</string>
+    <string name="item_color_orange">Orange</string>
+    <string name="item_color_green">Green</string>
+    <string name="item_color_purple">Purple</string>
     <string name="item_shape">Shape</string>
     <string name="item_shape_line">Line</string>
     <string name="item_shape_ellipse">Ellipse</string>
@@ -16,5 +22,8 @@
     <string name="shape_type_free_form">Free-Form</string>
     <string name="item_save_as">Save as...</string>
     <string name="item_brush_weight">Brush Weight</string>
+    <string name="item_brush_thin">Thin</string>
+    <string name="item_brush_thick">Thick</string>
+    <string name="item_brush_default">Default</string>
     <!-- End: Options Menu Items -->
 </resources>
