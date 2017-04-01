@@ -4,15 +4,22 @@
     <item
         android:id="@+id/item_open"
         android:title="@string/item_open" />
-    <item
-        android:id="@+id/item_save"
-        android:title="@string/item_save" />
+    <item android:title="Save">
+        <menu>
+            <item
+                android:id="@+id/item_save"
+                android:title="@string/item_save" />
+            <item
+                android:id="@+id/item_save_as"
+                android:title="@string/item_save_as" />
+        </menu>
+    </item>
     <item
         android:id="@+id/item_brush_color"
         android:title="@string/item_brush_color" />
     <item
         android:id="@+id/item_brush_weight"
-        android:title="Brush Weight" />
+        android:title="@string/item_brush_weight" />
     <item
         android:id="@+id/item_shape"
         android:title="@string/item_shape">
@@ -23,11 +30,14 @@
                     android:checked="true"
                     android:title="@string/item_shape_line" />
                 <item
-                    android:id="@+id/item_shape_circle"
-                    android:title="@string/item_shape_circle" />
+                    android:id="@+id/item_shape_ellipse"
+                    android:title="@string/item_shape_ellipse" />
                 <item
                     android:id="@+id/item_shape_rectangle"
                     android:title="@string/item_shape_rectangle" />
+                <item
+                    android:id="@+id/item_shape_free_form"
+                    android:title="Free-form" />
             </group>
         </menu>
     </item>

@@ -12,7 +12,7 @@
 
     <view
         android:id="@+id/document"
-        class="com.martinnazi.sketchit.ui.Document"
+        class="com.martinnazi.sketchit.ui.DocumentView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </RelativeLayout>
