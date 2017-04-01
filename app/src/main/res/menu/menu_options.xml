@@ -16,10 +16,50 @@
     </item>
     <item
         android:id="@+id/item_brush_color"
-        android:title="@string/item_brush_color" />
+        android:title="@string/item_brush_color" >
+
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/item_color_red"
+                    android:checked="true"
+                    android:title="@string/item_color_red" />
+                <item
+                    android:id="@+id/item_color_blue"
+                    android:title="@string/item_color_blue" />
+                <item
+                    android:id="@+id/item_color_yellow"
+                    android:title="@string/item_color_yellow" />
+                <item
+                    android:id="@+id/item_color_orange"
+                    android:title="@string/item_color_orange" />
+                <item
+                    android:id="@+id/item_color_green"
+                    android:title="@string/item_color_green" />
+                <item
+                    android:id="@+id/item_color_purple"
+                    android:title="@string/item_color_purple" />
+            </group>
+        </menu>
+    </item>
     <item
         android:id="@+id/item_brush_weight"
-        android:title="@string/item_brush_weight" />
+        android:title="@string/item_brush_weight" >
+        <menu>
+            <group>
+                <item
+                android:id="@+id/item_brush_default"
+                android:title="@string/item_brush_default"
+                android:checked="true"/>
+                <item
+                    android:id="@+id/item_brush_thin"
+                    android:title="@string/item_brush_thin" />
+                <item
+                    android:id="@+id/item_brush_thick"
+                    android:title="@string/item_brush_thick" />
+            </group>
+        </menu>
+    </item>
     <item
         android:id="@+id/item_shape"
         android:title="@string/item_shape">

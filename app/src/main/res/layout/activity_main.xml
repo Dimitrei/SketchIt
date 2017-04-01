@@ -14,5 +14,8 @@
         android:id="@+id/document"
         class="com.martinnazi.sketchit.ui.DocumentView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="23dp" />
 </RelativeLayout>

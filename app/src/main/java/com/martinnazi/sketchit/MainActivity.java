@@ -2,6 +2,7 @@ package com.martinnazi.sketchit;
 
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -152,17 +153,53 @@ public class MainActivity extends AppCompatActivity {
              * TODO: User weight for lines
              * * Option: Use OptionsMenu to select weight just like Shape submenu.
              */
+
             case R.id.item_brush_weight:
                 break;
-
+            case R.id.item_brush_default:
+                item.setChecked(true);
+                documentView.dpWidth = 4;
+                break;
+            case R.id.item_brush_thin:
+                item.setChecked(true);
+                documentView.dpWidth = 2;
+                break;
+            case R.id.item_brush_thick:
+                item.setChecked(true);
+                documentView.dpWidth = 6;
+                break;
             /**
              * TODO: User color for shapes
              * * Option: When item_brush_color is pressed show a dialog box.
              * * TODO: Add selectedColor field to the Document class to indicate which color shapes should be drawn with
              */
+
             case R.id.item_brush_color:
                 break;
-
+            case R.id.item_color_red:
+                item.setChecked(true);
+                documentView.selectedColor = Color.RED;
+                break;
+            case R.id.item_color_blue:
+                item.setChecked(true);
+                documentView.selectedColor = Color.BLUE;
+                break;
+            case R.id.item_color_yellow:
+                item.setChecked(true);
+                documentView.selectedColor = Color.YELLOW;
+                break;
+            case R.id.item_color_orange:
+                item.setChecked(true);
+                documentView.selectedColor = Color.rgb(255,165,0);
+                break;
+            case R.id.item_color_green:
+                item.setChecked(true);
+                documentView.selectedColor = Color.GREEN;
+                break;
+            case R.id.item_color_purple:
+                item.setChecked(true);
+                documentView.selectedColor = Color.rgb(128,0,128);
+                break;
             /**
              * The cases below are the shape selectors in the Shape submenu.
              */

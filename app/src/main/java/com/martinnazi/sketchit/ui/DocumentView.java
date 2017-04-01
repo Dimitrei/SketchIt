@@ -37,6 +37,8 @@ public class DocumentView extends View {
     private float lastTouchX;
     private float lastTouchY;
     private Context context;
+    public int selectedColor;
+    public int dpWidth;
 
     public DocumentView(Context context) {
         super(context);
@@ -129,7 +131,7 @@ public class DocumentView extends View {
                     ellipse.x1 = lastTouchX;
                     ellipse.y1 = lastTouchY;
 
-                    ellipse.setColor(Color.GREEN);
+                    ellipse.setColor(selectedColor);
                 } else if (currentObject2D instanceof Line) {
                     lastTouchX = event.getX();
                     lastTouchY = event.getY();
@@ -143,11 +145,11 @@ public class DocumentView extends View {
                     /**
                      * TODO: Replace the method call below when line widths are implemented.
                      */
-                    line.setWidth(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics()));
+                    line.setWidth(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpWidth, getResources().getDisplayMetrics()));
                     /**
                      * TODO: Replace the method call below when colors are implemented.
                      */
-                    line.setColor(Color.BLUE);
+                    line.setColor(selectedColor);
                 } else if (currentObject2D instanceof Rectangle) {
                     lastTouchX = event.getX();
                     lastTouchY = event.getY();
@@ -158,7 +160,7 @@ public class DocumentView extends View {
                     rectangle.x1 = lastTouchX;
                     rectangle.y1 = lastTouchY;
 
-                    rectangle.setColor(Color.RED);
+                    rectangle.setColor(selectedColor);
                 } else if (currentObject2D instanceof FreeFormLine) {
                     FreeFormLine freeFormLine = (FreeFormLine) currentObject2D;
                     if (lastTouchX != 0 ||
@@ -172,8 +174,8 @@ public class DocumentView extends View {
                     Line line = new Line(firstTouchX, firstTouchY,
                             lastTouchX, lastTouchY);
 
-                    freeFormLine.setColor(Color.MAGENTA);
-                    freeFormLine.setWidth(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics()));
+                    freeFormLine.setColor(selectedColor);
+                    freeFormLine.setWidth(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpWidth, getResources().getDisplayMetrics()));
                     freeFormLine.addLine(line);
                 }
                 invalidate();
@@ -194,7 +196,7 @@ public class DocumentView extends View {
                     ellipse.x1 = lastTouchX;
                     ellipse.y1 = lastTouchY;
 
-                    ellipse.setColor(Color.GREEN);
+                    ellipse.setColor(selectedColor);
                 } else if (currentObject2D instanceof Line) {
                     lastTouchX = event.getX();
                     lastTouchY = event.getY();
@@ -206,11 +208,11 @@ public class DocumentView extends View {
                     /**
                      * TODO: Replace the method call below when line widths are implemented.
                      */
-                    line.setWidth(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics()));
+                    line.setWidth(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpWidth, getResources().getDisplayMetrics()));
                     /**
                      * TODO: Replace the method call below when colors are implemented.
                      */
-                    line.setColor(Color.BLUE);
+                    line.setColor(selectedColor);
                 } else if (currentObject2D instanceof Rectangle) {
                     lastTouchX = event.getX();
                     lastTouchY = event.getY();
@@ -219,7 +221,7 @@ public class DocumentView extends View {
                     rectangle.x1 = lastTouchX;
                     rectangle.y1 = lastTouchY;
 
-                    rectangle.setColor(Color.RED);
+                    rectangle.setColor(selectedColor);
                 } else if (currentObject2D instanceof FreeFormLine) {
                     FreeFormLine freeFormLine = (FreeFormLine) currentObject2D;
                     if (lastTouchX != 0 ||
@@ -236,12 +238,12 @@ public class DocumentView extends View {
                     /**
                      * TODO: Replace the method call below when colors are implemented.
                      */
-                    freeFormLine.setColor(Color.MAGENTA);
+                    freeFormLine.setColor(selectedColor);
 
                     /**
                      * TODO: Replace the method call below when line widths are implemented.
                      */
-                    freeFormLine.setWidth(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, 4, getResources().getDisplayMetrics()));
+                    freeFormLine.setWidth(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpWidth, getResources().getDisplayMetrics()));
                     freeFormLine.addLine(line);
                 }
 
