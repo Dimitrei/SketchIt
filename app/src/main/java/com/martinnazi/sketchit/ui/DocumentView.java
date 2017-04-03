@@ -60,7 +60,7 @@ public class DocumentView extends View {
     }
 
     private void setup() {
-        this.object2DType = "Line";
+        this.object2DType = "Free-Form";
         document = new Document();
         context = getContext();
     }
