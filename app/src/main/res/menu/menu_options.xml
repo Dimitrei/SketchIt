@@ -66,8 +66,11 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/item_shape_line"
+                    android:id="@+id/item_shape_free_form"
                     android:checked="true"
+                    android:title="Free-form" />
+                <item
+                    android:id="@+id/item_shape_line"
                     android:title="@string/item_shape_line" />
                 <item
                     android:id="@+id/item_shape_ellipse"
@@ -75,9 +78,6 @@
                 <item
                     android:id="@+id/item_shape_rectangle"
                     android:title="@string/item_shape_rectangle" />
-                <item
-                    android:id="@+id/item_shape_free_form"
-                    android:title="Free-form" />
             </group>
         </menu>
     </item>

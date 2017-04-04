@@ -37,8 +37,8 @@ public class DocumentView extends View {
     private float lastTouchX;
     private float lastTouchY;
     private Context context;
-    public int selectedColor;
-    public int dpWidth;
+    public int selectedColor = Color.RED;
+    public int dpWidth = 4;
 
     public DocumentView(Context context) {
         super(context);
@@ -60,7 +60,7 @@ public class DocumentView extends View {
     }
 
     private void setup() {
-        this.object2DType = "Line";
+        this.object2DType = "Free-Form";
         document = new Document();
         context = getContext();
     }
